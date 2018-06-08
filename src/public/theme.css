@@ -1,0 +1,57 @@
+:root{
+    --positive:#c60007;
+}
+.icon{
+      line-height: 100%;
+}
+
+.tab-item.active{
+  color:var(--positive);
+}
+.tab-item .icon {
+    margin-top: 4px;
+    height: 26px;
+    font-size: 26px;
+}
+.nav-icon-top {
+    font-size: 12px;
+    line-height: 20px;
+    display: block;
+    overflow: hidden;
+    max-width: 150px;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    color:#333;
+}
+.nav-icon-top:active{
+  background-color: #f5f5f5;
+}
+.nav-icon-top .icon{
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  font: inherit;
+}
+.nav-icon-top .icon:before{
+  line-height: 28px;
+  font-size: 28px;
+}
+
+.list{
+  width: 100%;
+  overflow: hidden;
+}
+
+.bar{
+  position: fixed;
+}
+
+.tabs{
+  position: fixed;
+}
