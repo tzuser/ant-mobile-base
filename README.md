@@ -13,3 +13,7 @@ npm run start
 
 ### 注意antd-mobile 服务端渲染占时存在问题,需要手动更改包文件
 把`other/CustomKeyboard.js` 替换至`/node_modules/antd-mobile/lib/input-item/`文件夹内
+### 效果
+![img1](https://github.com/tzuser/ant-mobile-base/blob/master/other/img1.jpg)
+### 文件大小
+![img2](https://github.com/tzuser/ant-mobile-base/blob/master/other/img2.jpg)
