@@ -16,8 +16,6 @@ import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 
 import loadablePlugin from './loadablePlugin'
 
-//import 'isomorphic-fetch'
-
 
 const prepHTML=(data,{html,head,style,body,script,styleTags,state})=>{
 	data=data.replace('<html',`<html ${html}`);

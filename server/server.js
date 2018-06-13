@@ -11,7 +11,7 @@ const bodyParser = require('koa-bodyparser');
 const cors = require('koa2-cors');
 
 const app = new Koa()
-app.keys=['wysj3910'];//签名
+app.keys=['abcdefg123'];//签名
 
 app.use(bodyParser());//解析Json或者form
 app.use(cors({credentials:false}));//跨域
@@ -26,8 +26,8 @@ app.use(staticServer(path.resolve(__dirname, '../files')));
 app.use(staticCache(path.resolve(__dirname, '../build'), {maxAge: 365 * 24 * 60 * 60}));
 app.use(render);
 
-function getIPAdress(){  
-  //return '192.168.56.1'
+//获取局域网ip 方便手机测试
+function getIPAdress(){
     var interfaces = require('os').networkInterfaces();  
     for(var devName in interfaces){  
           var iface = interfaces[devName];  
