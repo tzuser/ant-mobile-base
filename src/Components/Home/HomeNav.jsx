@@ -45,32 +45,3 @@ class HomeNav extends Component{
   }
 }
 export default withRouter(HomeNav)
-
-/*
-<NavBox className="row">
-        <div className="col">
-           <a className="nav-icon-top">
-            <i style={{color:'#fa584d'}} className="icon icon-shouye8"></i>
-            预约挂号
-           </a>
-        </div>
-        <div className="col">
-          <a className="nav-icon-top">
-           <i style={{color:'#eca12c'}} className="icon icon-icon"></i>
-           智能导诊
-          </a>
-        </div>
-        <div className="col">
-          <a className="nav-icon-top">
-           <i style={{color:'#f29c35'}} className="icon icon-shouye7"></i>
-           理疗预约
-          </a>
-        </div>
-        <div className="col">
-          <a className="nav-icon-top">
-           <i style={{color:'#2c89ce'}} className="icon icon-shouye5"></i>
-           0元抢号
-          </a>
-        </div>
-      </NavBox>
-      */

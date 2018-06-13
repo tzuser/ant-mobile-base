@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import { Icon } from 'antd-mobile';
-class PageLoading extends Component{
+class LoadingComponent extends Component{
   render(){
     return <div><Icon type="loading" /></div>
   }
 }
-export default PageLoading
+export default LoadingComponent

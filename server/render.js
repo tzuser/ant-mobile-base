@@ -14,7 +14,9 @@ import stats from '../build/react-loadable.json';
 
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 
-import 'isomorphic-fetch'
+import loadablePlugin from './loadablePlugin'
+
+//import 'isomorphic-fetch'
 
 
 const prepHTML=(data,{html,head,style,body,script,styleTags,state})=>{
@@ -54,8 +56,10 @@ const render=async (ctx,next)=>{
 
 		let routeMarkup =renderToString(AppRender);
 		const initialState = store.getState();
-
 		let bundles = getBundles(stats, modules);
+		//loadable webpack4临时解决方案
+		bundles=loadablePlugin(bundles,stats,modules);
+
 		const styleTags = sheet.getStyleTags();
 
 		let styles = bundles.filter(bundle =>bundle.file.endsWith('.css'));
@@ -66,7 +70,7 @@ const render=async (ctx,next)=>{
 			      	}).join('\n')
 
 		let scriptStr=scripts.map(bundle => {
-			        	return `<script src="/${bundle.file}"></script>`
+			        	return `<script async="async" src="/${bundle.file}"></script>`
 			      	}).join('\n')
 
 		const helmet=Helmet.renderStatic();

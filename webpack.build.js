@@ -24,6 +24,8 @@ const PurifyCSSPlugin = require('purifycss-webpack');
 const glob = require('glob');
 //把manifest打包到html
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
+
+const theme = require('./src/public/theme');
 const config={
   optimization: {
     minimizer: [
@@ -50,33 +52,35 @@ const config={
     splitChunks: {
         cacheGroups: {
             default: false,
-            style: {
+            /*style: {
               test: /\.css/,
               name: "style",
               chunks: "all",
               priority: 1//优先级
-            },
-            ant: {
-              test: /[\\/]_ant/,
+            },*/
+            /*ant: {
+              test: /([\\/]_ant|\.css)/,
               name: "ant",
               chunks: "all",
-              minChunks:2,
+              //minChunks:2,
               priority: 0//优先级
+            },*/
+            src: {
+              chunks: "all",
+              minChunks:2,
+              priority: 0,//优先级
+              minSize:20*1024,
+              enforce: true,
+              reuseExistingChunk: false,
             },
-            commons: {
-              test: /[\\/]node_modules[\\/]/,
+            /*commons: {
+              test: /[\\/]node_modules[\\/](^_ant)/,
               name: "vendor",
               chunks: "all",
-              minChunks:2,
+              //minChunks:2,
               priority: -1//优先级
-            },
-            /*src: {
-              test: /[\\/]src[\\/]/,
-              chunks: "all",
-              minChunks:2,
-              priority: -2,//优先级
-              minSize:0,
             }*/
+            
         }
     }
   },
@@ -91,6 +95,15 @@ const config={
             loader: "css-loader" 
           }
          ]
+       },
+       {
+           test: /\.less$/,
+           include: /node_modules/,
+           use: [
+               MiniCssExtractPlugin.loader,
+               'css-loader',
+               {loader: 'less-loader', options: {modifyVars: theme, javascriptEnabled: true}},
+           ],
        }
     ]
   },
@@ -104,10 +117,10 @@ const config={
     new CopyWebpackPlugin([//复制静态文件
           {from:path.join(__dirname,'./static'),to:'static'}
         ]),
+    new InlineManifestWebpackPlugin(),
     new ReactLoadablePlugin({
             filename: './build/react-loadable.json',
       }),
-    new InlineManifestWebpackPlugin(),
     new BundleAnalyzerPlugin(),
   ],
 }

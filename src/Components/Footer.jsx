@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {withRouter,Link} from 'react-router-dom';
 import classNames from 'classnames'
 import styled from 'styled-components';
-
+import { withTheme } from 'styled-components'
 import { TabBar } from 'antd-mobile';
 
 const FooterBox=styled.div`
@@ -10,8 +10,9 @@ const FooterBox=styled.div`
   bottom:0;
   left:0;
   right:0;
+  z-index:10;
 `
-
+@withTheme
 @withRouter
 class Footer extends Component{
   state={active:null}
@@ -43,7 +44,8 @@ class Footer extends Component{
     if(path)this.setState({active: path});
   }
   renderItem({title,icon,path,badge=0}){
-    let {location:{pathname},show}=this.props;
+    let {location,show}=this.props;
+    let {pathname}=location;
     let active=this.state.active;
     return <TabBar.Item
               location={location}
@@ -65,13 +67,13 @@ class Footer extends Component{
   }
   render(){
     let active=this.state.active;
-    let {location,show}=this.props;
+    let {location,show,theme}=this.props;
     return  (
       <div style={{height:49}}>
         <FooterBox>
           <TabBar
-            unselectedTintColor="#949494"
-            tintColor="#33A3F4"
+            unselectedTintColor={theme["color-text-caption"]}
+            tintColor={theme["brand-primary"]}
             barTintColor="white"
             hidden={false}
           >

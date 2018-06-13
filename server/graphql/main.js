@@ -5,6 +5,15 @@ import {makeExecutableSchema} from 'graphql-tools';
 import * as banner from './banner';
 
 const typeDefs=[`
+
+  type Image{
+    url:String!
+    title:String
+    href:String
+    width:Int
+    height:Int
+  }
+
   type Query {
     hello: String
   }

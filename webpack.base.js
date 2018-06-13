@@ -1,6 +1,7 @@
 const path=require('path');
 const webpack=require('webpack');
 
+
 //html生成
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports={
@@ -23,6 +24,7 @@ module.exports={
         name: 'static/media/[name].[hash:8].[ext]',
         },
       },
+      
       {
         test:/\.(js|jsx)$/,
         include: path.resolve(__dirname, 'src'),
@@ -33,7 +35,7 @@ module.exports={
             plugins:[
               //解决 import {} 文件变大的问题
               ["direct-import",["react-router-dom","react-router"]],
-              ["import", { libraryName: "antd-mobile", style: "css" }],
+              ["import", {"libraryName": "antd-mobile", "style": true}],
               'transform-decorators-legacy','transform-decorators'
             ]
           },
