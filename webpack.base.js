@@ -1,5 +1,6 @@
 const path=require('path');
 const webpack=require('webpack');
+const alias=require('./alias');
 
 
 //html生成
@@ -36,7 +37,8 @@ module.exports={
               //解决 import {} 文件变大的问题
               ["direct-import",["react-router-dom","react-router"]],
               ["import", {"libraryName": "antd-mobile", "style": true}],
-              'transform-decorators-legacy','transform-decorators'
+              'transform-decorators-legacy','transform-decorators',
+              "transform-runtime"
             ]
           },
         }]
@@ -45,13 +47,14 @@ module.exports={
   },
   context:path.resolve(__dirname,'src'),
   resolve:{
+    alias : alias,
     extensions: ['.js','.jsx','.less','.scss','.css'],
     modules: ['node_modules']
   },
   plugins:[
     new webpack.DefinePlugin({
-        'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV || 'development'),
-        'process.env.RUN_ENV':JSON.stringify(process.env.RUN_ENV || 'dev')
+        'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV),
+        'process.env.RUN_ENV':JSON.stringify(process.env.RUN_ENV)
     }),
     new HTMLWebpackPlugin({
       title:'固生堂',

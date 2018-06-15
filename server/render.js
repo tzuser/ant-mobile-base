@@ -68,7 +68,7 @@ const render=async (ctx,next)=>{
 			      	}).join('\n')
 
 		let scriptStr=scripts.map(bundle => {
-			        	return `<script async="async" src="/${bundle.file}"></script>`
+			        	return `<script  src="/${bundle.file}"></script>`
 			      	}).join('\n')
 
 		const helmet=Helmet.renderStatic();

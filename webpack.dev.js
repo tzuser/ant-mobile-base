@@ -84,9 +84,6 @@ const config={
   },
   plugins:[
     new webpack.HotModuleReplacementPlugin(),//热加载
-    new ReactLoadablePlugin({
-            filename: './build/react-loadable.json',
-      }),
   ],
 }
 

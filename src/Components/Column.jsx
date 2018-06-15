@@ -1,3 +1,6 @@
+/**
+栏目组件
+**/
 import React,{Component} from 'react';
 import { Flex,Card, WhiteSpace } from 'antd-mobile';
 import styled from 'styled-components';

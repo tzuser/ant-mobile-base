@@ -1,8 +1,6 @@
-//import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Loadable from 'react-loadable';
-//import App from './Containers/App';
 import {Provider} from 'react-redux';
 
 import {getCreateStore} from './store'
@@ -31,7 +29,7 @@ if(process.env.NODE_ENV=='development'){
 }
 
 //是否是服务器渲染
-const renderDOM=process.env.NODE_ENV=='production'?ReactDOM.hydrate:ReactDOM.render;
+const renderDOM=process.env.RUN_ENV=='dev'?ReactDOM.render:ReactDOM.hydrate;
 const render=()=>{
 	const App = require("./Containers/App.jsx").default;
 	renderDOM(

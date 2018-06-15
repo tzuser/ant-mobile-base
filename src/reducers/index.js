@@ -13,5 +13,5 @@ const createFilteredReducer=(reducerFunction,reducerPredicate)=>{
 
 export default combineReducers({
 	config:config,
-  router:routerReducer
+	router:routerReducer
 })

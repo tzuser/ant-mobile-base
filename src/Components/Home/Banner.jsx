@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {withRouter,Link} from 'react-router-dom';
-import {Carousel } from 'antd-mobile'; 
+import {Carousel } from 'antd-mobile';
+//import {getBanner} from 'act$/home';
+@withRouter
 class Banner extends Component{
   render(){
     let {location}=this.props;
@@ -14,7 +16,7 @@ class Banner extends Component{
         >
           <img
             src={`https://www.zk120.com/media/widgets/banners/2018/06/180315063355660.20180604080556122.png`}
-            style={{ width: '100%',height:130, verticalAlign: 'top' }}
+            style={{ width: '100%',height:131, verticalAlign: 'top' }}
             />
           <img
             src={`https://www.zk120.com/media/widgets/banners/2018/06/180315063355660.20180604080556122.png`}
@@ -29,4 +31,4 @@ class Banner extends Component{
       )
   }
 }
-export default withRouter(Banner)
+export default Banner

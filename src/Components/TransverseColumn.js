@@ -1,3 +1,13 @@
+/**
+横向栏目组件
+使用示范
+import {TransverseColumn,TransverseItem} from '../TransverseColumn';
+<TransverseColumn title="附近医馆" moreHref="#" moreText="更多 >">
+        	<ShopItem>
+        	...
+        	</ShopItem>
+</TransverseColumn>
+**/
 import React,{Component} from 'react';
 import Column from './Column';
 import styled from 'styled-components';
@@ -11,8 +21,9 @@ const TransverseList=styled.div`
 	margin-left:${p=>'-'+p.theme['h-spacing-lg']};
 	margin-right:${p=>'-'+p.theme['h-spacing-lg']};
 	-webkit-overflow-scrolling : touch;
+	
 	& div:first-child{
-		padding-left:${p=>p.theme['h-spacing-lg']};
+		margin-left:7px;
 	}
 `
 
@@ -34,6 +45,9 @@ export const TransverseItem=styled.div`
 	    width: 1PX;
 	    transform-origin: 50% 50%;
 	    transform: scaleX(0.5);
+	}
+	&:active{
+		background-color:${p=>p.theme['fill-tap']};
 	}
 `
 

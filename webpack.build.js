@@ -59,28 +59,28 @@ const config={
               priority: 1//优先级
             },*/
             /*ant: {
-              test: /([\\/]_ant|\.css)/,
+              test: /([\\/](_ant|_rmc))/,
               name: "ant",
               chunks: "all",
-              //minChunks:2,
-              priority: 0//优先级
-            },*/
-            src: {
-              chunks: "all",
               minChunks:2,
-              priority: 0,//优先级
+              priority: 1//优先级
+            },*/
+
+            src: {
+              chunks: "initial",
+              minChunks:2,
               minSize:20*1024,
+              priority: 100,//优先级
               enforce: true,
               reuseExistingChunk: false,
             },
-            /*commons: {
-              test: /[\\/]node_modules[\\/](^_ant)/,
+            commons: {
+              test: /(_react|_redux|_core|_graphql|_styled|_stylis|_history|_cross|_classnames|_apollo)/,//[\\/]node_modules[\\/]/,
               name: "vendor",
-              chunks: "all",
+              chunks: "initial",
               //minChunks:2,
-              priority: -1//优先级
-            }*/
-            
+              priority: -2//优先级
+            }
         }
     }
   },

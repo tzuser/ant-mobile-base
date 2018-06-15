@@ -5,11 +5,18 @@ import {makeExecutableSchema} from 'graphql-tools';
 import * as banner from './banner';
 
 const typeDefs=[`
-
+  #图片
   type Image{
     url:String!
     title:String
+    width:Int
+    height:Int
+  }
+  #带链接的图片
+  type AImage{
     href:String
+    url:String!
+    title:String
     width:Int
     height:Int
   }

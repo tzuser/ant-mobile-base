@@ -9,10 +9,11 @@ const graphql = require('./graphql/main.js')
 //const {setUser} = require('./graphql/user.js')
 const bodyParser = require('koa-bodyparser');
 const cors = require('koa2-cors');
+const gzip = require('koa-gzip');
 
 const app = new Koa()
 app.keys=['abcdefg123'];//签名
-
+app.use(gzip());
 app.use(bodyParser());//解析Json或者form
 app.use(cors({credentials:false}));//跨域
 //app.use(setUser);//设置用户

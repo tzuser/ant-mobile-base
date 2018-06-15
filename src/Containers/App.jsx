@@ -2,10 +2,11 @@ import React,{PureComponent} from 'react';
 import {Route,withRouter,Switch} from 'react-router-dom';
 import Loadable from 'react-loadable';
 import PageLoading from '../Components/PageLoading';
-import Footer from '../Components/Footer';
+import Footer from '@/Components/Footer';
 import path from 'path';
 import styled,{ThemeProvider} from 'styled-components';
 import theme from '../public/theme'
+import {banner} from 'act_/home'
 
 const LoadableHome = Loadable({
   loader: () => import(/* webpackChunkName: 'Home' */ './Home'),

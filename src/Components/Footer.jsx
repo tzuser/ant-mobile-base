@@ -10,7 +10,7 @@ const FooterBox=styled.div`
   bottom:0;
   left:0;
   right:0;
-  z-index:10;
+  z-index:2;
 `
 @withTheme
 @withRouter
@@ -51,11 +51,17 @@ class Footer extends Component{
               location={location}
               title={title}
               key={path}
-              icon={<div className={classNames("icon",icon)} style={{fontSize:22,width: '22px',height: '22px'}}
-              />
+              icon={
+                <div 
+                className={classNames("icon",icon)} 
+                style={{fontSize:22,width: '22px',height: '22px'}}
+                />
               }
-              selectedIcon={<div className={classNames("icon",icon)} style={{fontSize:22,width: '22px',height: '22px'}}
-              />
+              selectedIcon={
+                <div 
+                className={classNames("icon",icon)} 
+                style={{fontSize:22,width: '22px',height: '22px'}}
+                />
               }
               selected={this.state.active==path}
               badge={badge}

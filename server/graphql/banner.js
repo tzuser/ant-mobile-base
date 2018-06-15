@@ -7,7 +7,7 @@ extend type Query{
     city_no:Int,
     # 平台 1<<0.H5,1<<1.微信,1<<2.PC官网,1<<3平安金管家,1<<4小程序
     platform:Int!
-  ):[Image]
+  ):[AImage]
 }
 `
 export const resolvers={

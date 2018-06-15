@@ -6,12 +6,18 @@ import Banner from '../Components/Home/Banner';
 import Vicinity from '../Components/Home/Vicinity';
 import {SearchBar,List, Tag,WhiteSpace,Icon } from 'antd-mobile';
 import styled from 'styled-components';
-import Column from '../Components/Column';
+import HotSection from '../Components/Home/HotSection';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as homeAct from 'act_/home';
+const Item = List.Item;
 //import loadableVisibility from 'react-loadable-visibility/loadable-components'
 
 //const LoadableHomeNav = loadableVisibility(() => import(/* webpackChunkName: 'HomeNav' */ '../Components/HomeNav'), {
 //  LoadingComponent: LoadingComponent,
 //})
+
+
 const PositionBtn=styled.div`
   color:${p=>p.theme["color-text-caption"]};
   font-size:14px;
@@ -25,10 +31,21 @@ const Headline=styled.span`
   font-size:14px;
 `;
 
-const Item = List.Item;
-const Brief = Item.Brief;
 
+
+
+const mapStateToProps=(state)=>({
+
+})
+const mapDispatchToProps=(dispatch)=>bindActionCreators({
+  getBannerAct:homeAct.getBanner,
+},dispatch)
+
+@connect(mapStateToProps,mapDispatchToProps)
 class Home extends Component{
+  componentWillMount(){
+    this.props.getBannerAct()
+  }
   render(){   
     return (
       <Page>
@@ -49,7 +66,10 @@ class Home extends Component{
         {/*附近医馆*/}
         <Vicinity />
         <WhiteSpace />
-        <Column title="热门科室"></Column>
+        {/*热门科室*/}
+        <HotSection />
+        <WhiteSpace />
+        {/*专家团队*/}
 
       </Page>
     );
