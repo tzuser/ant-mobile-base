@@ -10,6 +10,7 @@ import HotSection from '../Components/Home/HotSection';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as homeAct from 'act_/home';
+import { withTheme } from 'styled-components'
 const Item = List.Item;
 //import loadableVisibility from 'react-loadable-visibility/loadable-components'
 
@@ -32,26 +33,27 @@ const Headline=styled.span`
 `;
 
 
-
-
 const mapStateToProps=(state)=>({
 
 })
 const mapDispatchToProps=(dispatch)=>bindActionCreators({
   getBannerAct:homeAct.getBanner,
 },dispatch)
-
+@withTheme
 @connect(mapStateToProps,mapDispatchToProps)
 class Home extends Component{
   componentWillMount(){
     this.props.getBannerAct()
   }
   render(){   
+    console.log(this.props)
     return (
       <Page>
-        <SearchBar placeholder="搜索" maxLength={50} showCancelButton 
+        <SearchBar 
+        style={{background:this.props.theme["fill-body"]}}
+        placeholder="搜索" maxLength={50} showCancelButton 
         onClear={value => console.log(value, 'onClear')}
-        onCancel={value=> console.log(value, 'onCancel')}
+        onCancel={value=> this.props.showModalAct()}
         cancelText={<PositionBtn>广州<Icon type="down" size={'xxs'} /></PositionBtn>}/>
         <Banner />
         <HomeNav />

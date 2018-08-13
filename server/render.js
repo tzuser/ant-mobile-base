@@ -17,7 +17,7 @@ import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 import loadablePlugin from './loadablePlugin'
 
 
-const prepHTML=(data,{html,head,style,body,script,styleTags,state})=>{
+const prepHTML=(data,{html,head,style='',body,script,styleTags,state})=>{
 	data=data.replace('<html',`<html ${html}`);
 	data=data.replace('</head>',`${head}${style}</head>`);
 	data=data.replace('<body>',`<body><script>
@@ -58,11 +58,19 @@ const render=async (ctx,next)=>{
 		//loadable webpack4临时解决方案
 		bundles=loadablePlugin(bundles,stats,modules);
 
-		const styleTags = sheet.getStyleTags();
+		let styleTags = sheet.getStyleTags();
 
 		let styles = bundles.filter(bundle =>bundle.file.endsWith('.css'));
 		let scripts = bundles.filter(bundle => bundle.file.endsWith('.js'));
+	/*	let cssStr='';
+		for(let styleItem of styles){
+			let cssPath=path.resolve(__dirname,'../build',styleItem.file)
+			console.log(styleItem.file)
+			cssStr+=fs.readFileSync(cssPath,'utf8');
+		}
 
+		styleTags=styleTags.replace('</style>',`${cssStr}</style>`)*/
+		//let styleStr='';
 		let styleStr=styles.map(style => {
 			        	return `<link href="/${style.file}" rel="stylesheet"/>`
 			      	}).join('\n')
@@ -78,7 +86,7 @@ const render=async (ctx,next)=>{
 			style:styleStr,
 			body:routeMarkup,
 			script:scriptStr,
-			styleTags,
+			styleTags:styleTags,
 			state:initialState,
 		})
 		ctx.body=html

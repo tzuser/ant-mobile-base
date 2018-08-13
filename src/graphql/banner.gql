@@ -1,0 +1,7 @@
+query Banner($city_no:Int!,$platform:Int!){
+  banner(city_no:$city_no,platform:$platform){
+    title
+    url
+    href
+  }
+}

@@ -4,7 +4,12 @@ import classNames from 'classnames'
 import styled from 'styled-components';
 import { withTheme } from 'styled-components'
 import { TabBar } from 'antd-mobile';
-
+const navData=[
+  {title:'首页',icon:'icon-shouye',path:'/'},
+  {title:'问诊',icon:'icon-shouye2',path:'/1'},
+  {title:'消息',icon:'icon-shouye3',path:'/2',badge:3},
+  {title:'我的',icon:'icon-shouye1',path:'/user'}
+  ]
 const FooterBox=styled.div`
   position:fixed;
   bottom:0;
@@ -16,33 +21,27 @@ const FooterBox=styled.div`
 @withRouter
 class Footer extends Component{
   state={active:null}
-  data=[
-  {title:'首页',icon:'icon-shouye',path:'/'},
-  {title:'问诊',icon:'icon-shouye2',path:'/1'},
-  {title:'消息',icon:'icon-shouye3',path:'/2',badge:3},
-  {title:'我的',icon:'icon-shouye1',path:'/user'}
-  ]
   to(path){
     let {location:{pathname},history:{push}}=this.props;
     this.setState({active: path});
     push(path);
   }
-  componentWillMount(){
-    let {location:{pathname}}=this.props;
-    let selfName=null;
-    let path;
-    for(var [key,value] of Object.entries(this.data)){
-      let item=value;
-      if(this.state.active===null){
-        if(selfName && pathname.startsWith(`/${selfName}`)){//用户处理
-          path=item.path
-        }else if(pathname.startsWith(item.path)){
-          path=item.path
+
+  static getDerivedStateFromProps(nextProps,prevState){
+    let nextPathname=nextProps.location.pathname;
+    let currentNav;
+    if(nextPathname != prevState.active){
+      for(var [key,value] of Object.entries(navData)){
+        let item=value;
+        if(nextPathname.startsWith(item.path)){
+          currentNav=item
         }
       }
+      if(currentNav)return {active:currentNav.path};
     }
-    if(path)this.setState({active: path});
+    return null
   }
+
   renderItem({title,icon,path,badge=0}){
     let {location,show}=this.props;
     let {pathname}=location;
@@ -80,10 +79,10 @@ class Footer extends Component{
           <TabBar
             unselectedTintColor={theme["color-text-caption"]}
             tintColor={theme["brand-primary"]}
-            barTintColor="white"
+            barTintColor={theme["fill-base"]}
             hidden={false}
           >
-            {this.data.map(item=>this.renderItem(item)) }
+            {navData.map(item=>this.renderItem(item)) }
           </TabBar>
         </FooterBox>
       </div>

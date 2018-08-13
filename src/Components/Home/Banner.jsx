@@ -1,8 +1,22 @@
 import React,{Component} from 'react';
 import {withRouter,Link} from 'react-router-dom';
 import {Carousel } from 'antd-mobile';
+import {graphql} from 'react-apollo';
 //import {getBanner} from 'act$/home';
+import bannerQuery from 'gql_/banner.gql';
+
 @withRouter
+@graphql(bannerQuery,
+{options:(props)=>{
+    return {
+      variables:{
+        city_no:0,
+        platform:1,
+      },
+      errorPolicy:"ignore",
+    }
+  }
+})
 class Banner extends Component{
   render(){
     let {location}=this.props;

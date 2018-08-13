@@ -1,7 +1,7 @@
 const path=require('path');
 const webpack=require('webpack');
 const alias=require('./alias');
-
+//const OfflinePlugin = require('offline-plugin');
 
 //html生成
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -17,6 +17,11 @@ module.exports={
   },
   module:{
     rules:[
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader'
+      },
       {
         test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/,/\.svg$/,/\.eot$/,/\.ttf$/,/\.woff$/],
         loader: 'url-loader',
@@ -56,6 +61,7 @@ module.exports={
         'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV),
         'process.env.RUN_ENV':JSON.stringify(process.env.RUN_ENV)
     }),
+    ////new OfflinePlugin(),//离线缓存
     new HTMLWebpackPlugin({
       title:'固生堂',
       inject: true,

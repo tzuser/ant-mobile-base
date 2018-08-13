@@ -29,15 +29,6 @@ const theme = require('./src/public/theme');
 const config={
   optimization: {
     minimizer: [
-      //去除多余css
-      // new PurifyCSSPlugin({
-      //   paths: glob.sync(path.join(__dirname, '/src/*/*.jsx')),
-      //   moduleExtensions:['.jsx'],
-      //   purifyOptions:{
-      //     info:true,
-      //     minify:true,
-      //   }
-      // }),
       new UglifyJSPlugin({
          sourceMap: true,
          uglifyOptions: {
@@ -52,20 +43,6 @@ const config={
     splitChunks: {
         cacheGroups: {
             default: false,
-            /*style: {
-              test: /\.css/,
-              name: "style",
-              chunks: "all",
-              priority: 1//优先级
-            },*/
-            /*ant: {
-              test: /([\\/](_ant|_rmc))/,
-              name: "ant",
-              chunks: "all",
-              minChunks:2,
-              priority: 1//优先级
-            },*/
-
             src: {
               chunks: "initial",
               minChunks:2,
@@ -97,13 +74,13 @@ const config={
          ]
        },
        {
-           test: /\.less$/,
-           include: /node_modules/,
-           use: [
-               MiniCssExtractPlugin.loader,
-               'css-loader',
-               {loader: 'less-loader', options: {modifyVars: theme, javascriptEnabled: true}},
-           ],
+         test: /\.less$/,
+         include: /node_modules/,
+         use: [
+             MiniCssExtractPlugin.loader,
+             'css-loader',
+             {loader: 'less-loader', options: {modifyVars: theme, javascriptEnabled: true}},
+         ],
        }
     ]
   },
@@ -118,6 +95,7 @@ const config={
           {from:path.join(__dirname,'./static'),to:'static'}
         ]),
     new InlineManifestWebpackPlugin(),
+    
     new ReactLoadablePlugin({
             filename: './build/react-loadable.json',
       }),

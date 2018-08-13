@@ -36,7 +36,7 @@ export const TransverseItem=styled.div`
 	&::before{	
 		content: '';
 	    position: absolute;
-	    background-color: #ddd;
+	    background-color: ${p=>p.theme['fill-tap']};
 	    display: block;
 	    z-index: 1;
 	    top: 0;

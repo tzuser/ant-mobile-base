@@ -6,7 +6,7 @@ import Footer from '@/Components/Footer';
 import path from 'path';
 import styled,{ThemeProvider} from 'styled-components';
 import theme from '../public/theme'
-import {banner} from 'act_/home'
+//import {banner} from 'act_/home'
 
 const LoadableHome = Loadable({
   loader: () => import(/* webpackChunkName: 'Home' */ './Home'),

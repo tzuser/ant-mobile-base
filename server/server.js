@@ -42,8 +42,8 @@ function getIPAdress(){
 }
 
 Loadable.preloadAll().then(() => {
-  app.listen(8181, () => {
-    console.log(`http://${getIPAdress()}:8181`);
+  app.listen(8182, () => {
+    console.log(`http://${getIPAdress()}:8182`);
     console.log('服务启动');
   });
 });

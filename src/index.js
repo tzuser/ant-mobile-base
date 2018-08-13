@@ -30,8 +30,8 @@ if(process.env.NODE_ENV=='development'){
 
 //是否是服务器渲染
 const renderDOM=process.env.RUN_ENV=='dev'?ReactDOM.render:ReactDOM.hydrate;
-const render=()=>{
-	const App = require("./Containers/App.jsx").default;
+const render=async ()=>{
+	const {default:App} =require("./Containers/App.jsx"); //await import("./Containers/App.jsx") 
 	renderDOM(
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
