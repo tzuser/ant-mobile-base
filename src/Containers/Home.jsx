@@ -12,12 +12,6 @@ import {bindActionCreators} from 'redux';
 import * as homeAct from 'act_/home';
 import { withTheme } from 'styled-components'
 const Item = List.Item;
-//import loadableVisibility from 'react-loadable-visibility/loadable-components'
-
-//const LoadableHomeNav = loadableVisibility(() => import(/* webpackChunkName: 'HomeNav' */ '../Components/HomeNav'), {
-//  LoadingComponent: LoadingComponent,
-//})
-
 
 const PositionBtn=styled.div`
   color:${p=>p.theme["color-text-caption"]};
@@ -37,16 +31,12 @@ const mapStateToProps=(state)=>({
 
 })
 const mapDispatchToProps=(dispatch)=>bindActionCreators({
-  getBannerAct:homeAct.getBanner,
+
 },dispatch)
 @withTheme
 @connect(mapStateToProps,mapDispatchToProps)
 class Home extends Component{
-  componentWillMount(){
-    this.props.getBannerAct()
-  }
-  render(){   
-    console.log(this.props)
+  render(){ 
     return (
       <Page>
         <SearchBar 

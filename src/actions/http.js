@@ -1,4 +1,4 @@
-import { createApolloFetch } from 'apollo-fetch';
+/*import { createApolloFetch } from 'apollo-fetch';
 //import { Modal} from 'antd-mobile';
 import Instance from 'act_/Instance';
 
@@ -25,4 +25,4 @@ const request=({query,variables})=>async (dispatch,getState)=>{
 	}
 	return data
 }
-export default request
+export default request*/

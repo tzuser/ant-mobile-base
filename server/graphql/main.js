@@ -3,6 +3,10 @@ import graphqlHTTP from 'koa-graphql';
 import formatError from './public/formatError';
 import {makeExecutableSchema} from 'graphql-tools';
 import * as banner from './banner';
+//import * as user from './user';
+
+import { graphqlKoa,graphiqlKoa } from 'apollo-server-koa';
+
 
 const typeDefs=[`
   #图片
@@ -50,11 +54,17 @@ addSchema(banner);
 
 const mySchema = makeExecutableSchema({typeDefs,resolvers})
 
+
 //路由处理
 const router = new Router();
-router.all('/graphql', graphqlHTTP({
+router.all('/graphql', async (ctx, next) =>{
+  await graphqlKoa({
     schema: mySchema,
-    graphiql: true,
     formatError,
-}))
+    context:ctx
+  })(ctx)
+})
+router.get('/graphiql', async (ctx, next) =>{
+  graphiqlKoa({ endpointURL: '/graphql' })(ctx)
+});
 export default router

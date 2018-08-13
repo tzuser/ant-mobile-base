@@ -5,6 +5,7 @@ import {graphql} from 'react-apollo';
 //import {getBanner} from 'act$/home';
 import bannerQuery from 'gql_/banner.gql';
 
+const ImgHost="//admin-gstzy.oss-cn-shenzhen.aliyuncs.com/data/upload/"
 @withRouter
 @graphql(bannerQuery,
 {options:(props)=>{
@@ -19,7 +20,9 @@ import bannerQuery from 'gql_/banner.gql';
 })
 class Banner extends Component{
   render(){
-    let {location}=this.props;
+    let {data:{banner,loading},location}=this.props;
+    console.log(this.props)
+    if(loading)return '加载中...';
     return  (
       <div style={{height:130}}>
         <Carousel
@@ -28,18 +31,16 @@ class Banner extends Component{
           beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
           afterChange={index => console.log('slide to', index)}
         >
-          <img
-            src={`https://www.zk120.com/media/widgets/banners/2018/06/180315063355660.20180604080556122.png`}
-            style={{ width: '100%',height:131, verticalAlign: 'top' }}
-            />
-          <img
-            src={`https://www.zk120.com/media/widgets/banners/2018/06/180315063355660.20180604080556122.png`}
-            style={{ width: '100%',height:130, verticalAlign: 'top' }}
-            />
-          <img
-            src={`https://www.zk120.com/media/widgets/banners/2018/06/180315063355660.20180604080556122.png`}
-            style={{ width: '100%',height:130, verticalAlign: 'top' }}
-            />
+          {banner.map((item,key)=>(
+            <img
+              key={key}
+              src={ImgHost+item.url}
+              title={item.title}
+              style={{ width: '100%',height:131, verticalAlign: 'top' }}
+              />
+          ))}
+          
+         
         </Carousel>
       </div>
       )

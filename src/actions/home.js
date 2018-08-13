@@ -1,4 +1,4 @@
-import request from 'act_/http';
+//import request from 'act_/http';
 import ReactDOMServer from 'react-dom/server';
 import React from 'react';
 import Test from 'con_/Test'
@@ -12,12 +12,11 @@ export const query=`
 		}
 	}
 `
-export const getBanner=()=>async (dispatch,getState)=>{
-	console.log('aaaaaaaaaaaaaaaaaaaaaa',ReactDOMServer.renderToString(<Test/>));
+/*export const getBanner=()=>async (dispatch,getState)=>{
 	const variables={
 		city_no:0,
 		platform:1,
 	}
 	let data=await dispatch(request({query,variables}));
-	console.log(data);
 }
+*/
