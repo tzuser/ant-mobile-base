@@ -8,6 +8,5 @@ const alias={
     '_tools':path.resolve(__dirname,'./src/public/tools.js'),
     '_public':path.resolve(__dirname,'./src/public/public.js'),
     'public_':path.resolve(__dirname,'./src/public'),
-    'gql_':path.resolve(__dirname,'./src/graphql'),
 }
 module.exports=alias

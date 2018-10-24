@@ -1,28 +1,17 @@
 import React,{Component} from 'react';
 import {withRouter,Link} from 'react-router-dom';
 import {Carousel } from 'antd-mobile';
-import {graphql} from 'react-apollo';
-//import {getBanner} from 'act$/home';
-import bannerQuery from 'gql_/banner.gql';
 
 const ImgHost="//admin-gstzy.oss-cn-shenzhen.aliyuncs.com/data/upload/"
+
 @withRouter
-@graphql(bannerQuery,
-{options:(props)=>{
-    return {
-      variables:{
-        city_no:0,
-        platform:1,
-      },
-      errorPolicy:"ignore",
-    }
-  }
-})
 class Banner extends Component{
   render(){
-    let {data:{banner,loading},location}=this.props;
-    console.log(this.props)
-    if(loading)return '加载中...';
+    let {location}=this.props;
+    const banner=[
+    {title:"test",url:"banner/201810/19/5bc980453639f.jpg"},
+    {title:"test2",url:"banner/201810/17/5bc6dd58042fd.jpg"},
+    ];
     return  (
       <div style={{height:130}}>
         <Carousel

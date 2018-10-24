@@ -37,6 +37,7 @@ const mapDispatchToProps=(dispatch)=>bindActionCreators({
 @connect(mapStateToProps,mapDispatchToProps)
 class Home extends Component{
   render(){ 
+    console.log('home',this.props)
     return (
       <Page>
         <SearchBar 

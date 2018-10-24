@@ -9,7 +9,6 @@ require('babel-register')({
   "react-loadable/babel",
   'transform-decorators-legacy',
   'transform-decorators',
-  "import-graphql"
   ]
 });
 

@@ -52,7 +52,7 @@ const config={
               reuseExistingChunk: false,
             },
             commons: {
-              test: /(_react|_redux|_core|_graphql|_styled|_stylis|_history|_cross|_classnames|_apollo)/,//[\\/]node_modules[\\/]/,
+              test: /(_react|_redux|_core|_styled|_stylis|_history|_cross|_classnames)/,//[\\/]node_modules[\\/]/,
               name: "vendor",
               chunks: "initial",
               //minChunks:2,
