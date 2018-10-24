@@ -21,5 +21,3 @@ npm run start
 ```
 ### 效果
 ![img1](https://github.com/tzuser/ant-mobile-base/blob/master/other/img1.jpg)
-### 文件大小
-![img2](https://github.com/tzuser/ant-mobile-base/blob/master/other/img2.jpg)
