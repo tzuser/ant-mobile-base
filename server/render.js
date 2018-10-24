@@ -17,7 +17,7 @@ import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 
 import 'isomorphic-fetch'
 
-import loadablePlugin from './loadablePlugin'
+//import loadablePlugin from './loadablePlugin'
 
 
 const prepHTML=(data,{html,head,style,body,script,styleTags,state})=>{
@@ -42,7 +42,6 @@ const render=async (ctx,next)=>{
 		const { store, history } = getCreateStore(reducers,ctx.req.url);
 
 		const sheet = new ServerStyleSheet()
-
 		//初始请求数据
 		//await initalActions(store,ctx.req.url,initialRequestConfig)
 		let modules=[];
@@ -57,19 +56,15 @@ const render=async (ctx,next)=>{
 				</StyleSheetManager>
 			</Loadable.Capture>
 		)
-		//await getDataFromTree(AppRender);
-		let routeMarkup =renderToString(AppRender);
+
+		let routeMarkup=renderToString(AppRender);
+
 		const initialState = store.getState();
-		//console.log(store.getState())
-		//let state=initialState;//store.getState();
-		console.log(modules)
 		let bundles = getBundles(stats, modules);
-		//loadable webpack4临时解决方案
-		bundles=loadablePlugin(bundles,stats,modules);
 		
 		const styleTags = sheet.getStyleTags();
 
-		// link 样式转内联样式
+		
 		let styles = bundles.filter(bundle => bundle.file.endsWith('.css'));
 		let scripts = bundles.filter(bundle => bundle.file.endsWith('.js'));
 		//let cssStr='';
@@ -79,7 +74,7 @@ const render=async (ctx,next)=>{
 			      	}).join('\n')*/
 
 
-
+		// link 样式转内联样式
 		let styleTagStr='';
 		styles.map(style => {
 								styleTagStr+=fs.readFileSync(path.join(__dirname,'../build',`/${style.file}`),'utf8');

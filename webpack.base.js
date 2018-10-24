@@ -31,16 +31,9 @@ module.exports={
         include: path.resolve(__dirname, 'src'),
         use:[{
           loader:require.resolve('babel-loader'),
-          options:{
-            presets:['env','react','stage-0'],
-            plugins:[
-              //解决 import {} 文件变大的问题
-              ["direct-import",["react-router-dom","react-router"]],
-              ["import", {"libraryName": "antd-mobile", "style": true}],
-              'transform-decorators-legacy','transform-decorators',
-              "transform-runtime"
-            ]
-          },
+          options:{ plugins:[
+              ["import", {"libraryName": "antd-mobile", "style": true}]
+            ]}
         }]
       },
     ]

@@ -1,12 +1,12 @@
 import React,{Component} from 'react';
-import Page from '../Components/Page';
+import Page from 'com_/Page';
 import HomeNav from '../Components/Home/HomeNav';
 import LoadingComponent from '../Components/LoadingComponent';
-import Banner from '../Components/Home/Banner';
-import Vicinity from '../Components/Home/Vicinity';
+import Banner from 'com_/Home/Banner';
+import Vicinity from 'com_/Home/Vicinity';
 import {SearchBar,List, Tag,WhiteSpace,Icon } from 'antd-mobile';
 import styled from 'styled-components';
-import HotSection from '../Components/Home/HotSection';
+import HotSection from 'com_/Home/HotSection';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as homeAct from 'act_/home';
@@ -37,7 +37,6 @@ const mapDispatchToProps=(dispatch)=>bindActionCreators({
 @connect(mapStateToProps,mapDispatchToProps)
 class Home extends Component{
   render(){ 
-    console.log('home',this.props)
     return (
       <Page>
         <SearchBar 

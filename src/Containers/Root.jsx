@@ -1,39 +1,36 @@
-import React,{PureComponent} from 'react';
-import {Route,withRouter,Switch} from 'react-router-dom';
-import Loadable from 'react-loadable';
-import PageLoading from '../Components/PageLoading';
-import Footer from '@/Components/Footer';
-import path from 'path';
+import React, { Component } from "react";
+import { Route, withRouter, Switch } from "react-router-dom";
+import Loadable from "react-loadable";
+import PageLoading from "com_/PageLoading";
+import Footer from "com_/Footer";
+import { withTheme } from "styled-components";
 
-const LoadableHome = Loadable({
-  loader: () => import(/* webpackChunkName: 'Home' */ './Home'),
-  loading:PageLoading
+const Home = Loadable({
+  loader: () => import("con_/Home.jsx"),
+  loading: () => <div>加载中...</div>
 });
-const LoadableUser = Loadable({
-  loader: () => import(/* webpackChunkName: 'User' */ './User'),
-  loading:PageLoading
+const User = Loadable({
+  loader: () => import("con_/User.jsx"),
+  loading: () => <div>加载中...</div>
 });
-const LoadableUserTest = Loadable({
-  loader: () => import(/* webpackChunkName: 'Test' */ './Test'),
-  loading:PageLoading
+const Test = Loadable({
+  loader: () => import("con_/Test.jsx"),
+  loading: () => <div>加载中...</div>
 });
 
-
-@withRouter
-class App extends PureComponent{
-	render(){
-    console.log('root',this.props)
-		return(
-        <div>
-          <Switch>
-            <Route exact path="/" component={LoadableHome} />
-            <Route exact path="/home" component={LoadableHome} />
-            <Route path="/user" component={LoadableUser} />
-            <Route path="/test" component={LoadableUserTest} />
-          </Switch>
-          <Footer />
-        </div>
-			)
-	}
-};
-export default App;
+@withTheme
+class Root extends Component {
+  render() {
+    return (
+      <div>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/user" component={User} />
+          <Route path="/test" component={Test} />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
+}
+export default Root;

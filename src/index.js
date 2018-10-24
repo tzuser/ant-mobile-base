@@ -1,5 +1,6 @@
 import React from "react";
 //import 'babel-polyfill';
+
 import ReactDOM from "react-dom";
 //import {RemoveServerSideCss} from './Module/MaterialUIServiceRendering';
 import Loadable from "react-loadable";

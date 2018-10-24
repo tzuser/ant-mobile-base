@@ -1,17 +1,14 @@
 import React,{Component} from 'react';
+import { withTheme } from 'styled-components'
 
-import {Button } from 'antd-mobile';
-
-
+@withTheme
 class Test extends Component{
   render(){   
     return (
       <div>
-        <Button>test</Button>
-
+      test
       </div>
     );
   }
 }
-
 export default Test;

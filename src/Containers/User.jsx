@@ -1,7 +1,9 @@
 import React,{Component} from 'react';
 import Page from '../Components/Page';
-import {Button} from 'antd-mobile';
-import { Modal} from 'antd-mobile';
+import { Button,Modal} from 'antd-mobile';
+import { withTheme } from "styled-components";
+
+@withTheme
 class User extends Component{
   render(){   
     return (
