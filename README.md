@@ -1,9 +1,9 @@
-# React+ant-mobile+graphQLServer 服务端渲染 
+# React+Redux+ant-mobile 服务端渲染 
 优化打包、服务端首屏渲染、按需加载、按屏幕展示加载组件、使用antd-moubileUI框架、webpack4
 
 
 * 客户端使用React + Redux + Ant-Mobile
-* 服务端使用Koa2 + GraphQL 
+* 服务端使用Koa2 
 
 ### 启动
 
