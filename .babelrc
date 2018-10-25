@@ -1,7 +1,6 @@
 {
   "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": [
-   /* ["import", { "libraryName": "antd-mobile", "style": true }],*/
     "syntax-dynamic-import",
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     "@babel/plugin-proposal-class-properties",
