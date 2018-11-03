@@ -1,10 +1,10 @@
 import React from 'react';
 import Loadable from 'react-loadable';
 import { renderToString } from 'react-dom/server';
-import App from '../src/containers/App.jsx';
+import App from '../src/Containers/App.jsx';
 import { Router } from 'react-router-dom';
-import reducers from '../src/store/reducers/index';
-import { getCreateStore } from '../src/store/store';
+import reducers from '../src/reducers/index';
+import { getCreateStore } from '../src/store';
 import { Provider } from 'react-redux';
 import path from 'path';
 import fs from 'fs';
