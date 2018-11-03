@@ -1,6 +1,6 @@
 //require('@babel/polyfill')
 require('@babel/register')({
-  plugins: ['add-module-exports', 'dynamic-import-node'],
+  plugins: ['dynamic-import-node'],
 });
 
 const alias = require('../alias');

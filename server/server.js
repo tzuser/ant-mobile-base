@@ -1,14 +1,14 @@
-const Loadable = require('react-loadable');
-const Router = require('koa-router');
-const path = require('path');
-const staticCache = require('koa-static-cache');
-const Koa = require('koa');
-const render = require('./render.js');
+import Loadable from 'react-loadable';
+import Router from 'koa-router';
+import path from 'path';
+import staticCache from 'koa-static-cache';
+import Koa from 'koa';
+import render from './render.js';
 
-const bodyParser = require('koa-bodyparser');
-const cors = require('koa2-cors');
-const gzip = require('koa-compress');
-const range = require('koa-range'); //解决视频播放,断点续传
+import bodyParser from 'koa-bodyparser';
+import cors from 'koa2-cors';
+import gzip from 'koa-compress';
+import range from 'koa-range'; //解决视频播放,断点续传
 
 const app = new Koa();
 app.keys = ['abcdefg123']; //签名

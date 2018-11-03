@@ -8,7 +8,6 @@ import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import { getCreateStore } from './store';
-import { BrowserRouter } from 'react-router-dom';
 
 import reducers from './reducers/index';
 import { persistStore } from 'redux-persist';
@@ -42,11 +41,11 @@ const render = (AppCom = App) => {
   renderDOM(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter history={history}>
+        <Router history={history}>
           <RemoveServerSideCss>
             <AppCom />
           </RemoveServerSideCss>
-        </BrowserRouter>
+        </Router>
       </PersistGate>
     </Provider>,
     document.getElementById('root')
